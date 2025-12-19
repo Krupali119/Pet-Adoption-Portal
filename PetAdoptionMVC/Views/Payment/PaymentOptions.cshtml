@@ -1,0 +1,54 @@
+﻿@{
+    ViewData["Title"] = "PaymentOptions";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Payment Options</h2>
+<p>Amount to Pay: @Model.Amount</p>
+
+<form asp-action="ProcessPayment" method="post">
+    <input type="hidden" name="requestId" value="@Model.RequestId" />
+    <input type="hidden" name="amount" value="@Model.Amount" />
+
+    <label for="paymentMethod">Choose Payment Method:</label>
+    <select id="paymentMethod" name="paymentMethod" onchange="togglePaymentForm()">
+        <option value="Card">Card</option>
+        <option value="WhatsApp">WhatsApp</option>
+    </select>
+
+    <!-- Card Payment Form -->
+    <div id="cardPaymentForm" style="display:none; margin-top: 15px;">
+        <h3>Card Payment</h3>
+        <label>Card Holder Name:</label>
+        <input type="text" name="cardPayment.CardHolderName" />
+        <label>Card Number:</label>
+        <input type="text" name="cardPayment.CardNumber" maxlength="16" />
+        <label>Expiration Date (MM/YY):</label>
+        <input type="text" name="cardPayment.ExpirationDate" />
+        <label>CVV:</label>
+        <input type="text" name="cardPayment.CVV" maxlength="3" />
+        <label>Save Card:</label>
+        <input type="checkbox" name="cardPayment.SaveCard" />
+    </div>
+
+    <!-- WhatsApp Payment Form -->
+    <div id="whatsappPaymentForm" style="display:none; margin-top: 15px;">
+        <h3>WhatsApp Payment</h3>
+        <label>Phone Number:</label>
+        <input type="text" name="whatsappPayment.UserPhoneNumber" maxlength="10" />
+
+    </div>
+
+    <button type="submit" style="margin-top: 20px;">Pay</button>
+</form>
+
+<script>
+    function togglePaymentForm() {
+        // Get selected payment method
+        const method = document.getElementById('paymentMethod').value;
+
+        // Show/hide payment forms
+        document.getElementById('cardPaymentForm').style.display = method === 'Card' ? 'block' : 'none';
+        document.getElementById('whatsappPaymentForm').style.display = method === 'WhatsApp' ? 'block' : 'none';
+    }
+</script>

@@ -1,0 +1,217 @@
+﻿
+
+@model PetAdoptionMVC.Models.UserMaster
+
+@{
+    Layout = null;
+}
+
+<style>
+    /* ===========================
+               GLOBAL STYLES
+            ============================ */
+    body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        /* Luxury Cream + Forest Green Gradient */
+        background: linear-gradient(135deg, #f6f0e8, #e6dacb);
+        color: #2e3d2f;
+    }
+
+    .main-container {
+        display: flex;
+        width: 90%;
+        max-width: 1100px;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        background: white;
+    }
+
+    /* ===========================
+               LEFT SECTION (Branding)
+            ============================ */
+    .left-section {
+        flex: 1;
+        padding: 3rem 2rem;
+        background: linear-gradient(180deg, #2e4d38, #1b3324); /* Deep Forest Green */
+        color: #fff8e1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+        .left-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: #ffebc2;
+            font-weight: bold;
+        }
+
+        .left-section p {
+            max-width: 300px;
+            font-size: 1.1rem;
+            color: #f8e7c6;
+        }
+
+        .left-section img {
+            width: 70%;
+            margin-top: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+    /* ===========================
+               RIGHT SECTION (Login Form)
+            ============================ */
+    .right-section {
+        flex: 1;
+        padding: 2.5rem;
+        background-color: #ffffff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .form-card {
+        width: 100%;
+        max-width: 420px;
+    }
+
+        .form-card h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2e4d38;
+            margin-bottom: 2rem;
+        }
+
+    /* ---------------------
+               INPUT STYLING
+            ---------------------- */
+    input[type="email"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px 18px;
+        margin-bottom: 1rem;
+        font-size: 1rem;
+        border-radius: 30px;
+        border: 1px solid #ccc;
+        background-color: #fafafa;
+        transition: 0.3s ease;
+    }
+
+    input:focus {
+        border-color: #2e4d38;
+        box-shadow: 0 0 6px rgba(46, 77, 56, 0.4);
+        outline: none;
+    }
+
+    /* ---------------------
+               BUTTON STYLING
+            ---------------------- */
+    button[type="submit"] {
+        width: 100%;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 30px;
+        background: linear-gradient(90deg, #c9a66b, #b18a54); /* Gold */
+        color: white;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s ease;
+        margin-top: 10px;
+    }
+
+        button[type="submit"]:hover {
+            background: linear-gradient(90deg, #b18a54, #a0793d);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+        }
+
+    /* ---------------------
+               LINKS
+            ---------------------- */
+    .text-link {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+        .text-link a {
+            color: #1f4c35;
+            font-weight: bold;
+            text-decoration: none;
+            transition: 0.2s;
+        }
+
+            .text-link a:hover {
+                text-decoration: underline;
+                color: #b08953;
+            }
+
+    /* Footer Message */
+    .card-footer p {
+        text-align: center;
+        margin-top: 2rem;
+        font-style: italic;
+        color: #666;
+    }
+
+</style>
+
+<div class="main-container">
+    <!-- LEFT SIDE -->
+    <div class="left-section">
+        <h2>🐾 Welcome Back to Pet Adoption</h2>
+        <p>Your next furry friend is waiting for you. Login and continue your beautiful journey!</p>
+        <img src="/images/Lim.jpeg" alt="Pet Image">
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="right-section">
+        <div class="form-card">
+            <h2>Login</h2>
+
+            <form asp-action="Login" method="post">
+
+                <!-- Email -->
+                <label asp-for="Email">Email or Phone</label>
+                <input asp-for="Email" type="email" placeholder="Enter your email" required />
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+                <!-- Password -->
+                <label asp-for="Password">Password</label>
+                <input asp-for="Password" type="password" placeholder="Enter your password" required />
+                <span asp-validation-for="Password" class="text-danger"></span>
+
+                <!-- Button -->
+                <button type="submit">Login</button>
+
+                <!-- Links -->
+                <div class="text-link">
+                    <p>Forgot password? <a href="#">Recover now</a></p>
+                </div>
+
+                <div class="text-link">
+                    <p>
+                        Don't have an account?
+                        <a asp-controller="UserMasters" asp-action="Register">Register Here</a>
+                    </p>
+                </div>
+
+                <div class="card-footer">
+                    <p>🐶 Adopt, Don’t Shop! 🐱</p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,18 @@
+﻿@model PetAdoptionMVC.Models.PetBehaviorProfile
+
+@{
+    ViewData["Title"] = "Pet Behavior Profile Details";
+
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Pet Behavior Profile Details</h1>
+
+<div>
+    <h4>Behavior: @Model.Behavior</h4>
+    <h4>Training: @Model.Training</h4>
+    <h4>Pet: @Model.PetMaster.PetName</h4>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.BehaviorProfileId">Edit</a> |
+<a asp-action="Index">Back to List</a>

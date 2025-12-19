@@ -1,0 +1,52 @@
+﻿@{
+    ViewData["Title"] = "MyAdoptionRequests";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model List<PetAdoptionMVC.Models.AdoptionRequest>
+
+
+
+<h2>My Adoption Requests</h2>
+
+@if (Model.Count == 0)
+{
+    <p>You have no adoption requests yet.</p>
+}
+else
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Request Date</th>
+                <th>Pet Name</th>
+                <th>Status</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in Model)
+            {
+                <tr>
+                    <td>@request.RequestDate.ToString("dd-MM-yyyy")</td>
+                    <td>@request.Pet.PetName</td>
+                    <td>@request.Status</td>
+                    <td>
+                        @if (request.Status == "Approved")
+                        {
+                            <a href="@Url.Action("PaymentOptions", "Payment", new { requestId = request.RequestId })" class="btn btn-success">
+                                Proceed to Payment
+                            </a>
+                        }
+                        else
+                        {
+                            <span class="text-muted">No action available</span>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+

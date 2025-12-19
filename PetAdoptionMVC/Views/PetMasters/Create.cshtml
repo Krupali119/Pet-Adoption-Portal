@@ -1,0 +1,172 @@
+﻿@model PetAdoptionMVC.Models.PetMaster
+@{
+    ViewData["Title"] = "Add New Pet";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="form-container">
+    <h1>Add a New Pet</h1>
+    <h4>Fill out the form to add a new pet to the adoption list.</h4>
+    <form asp-action="Create" enctype="multipart/form-data">
+        <!-- Pet Name -->
+        <div class="form-group">
+            <label asp-for="PetName">Pet Name <span class="text-danger">*</span></label>
+            <input asp-for="PetName" class="form-control" placeholder="Enter the pet's name" />
+            <span asp-validation-for="PetName" class="text-danger"></span>
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+            <label asp-for="Age">Age (in years) <span class="text-danger">*</span></label>
+            <input asp-for="Age" class="form-control" placeholder="Enter the pet's age" />
+            <span asp-validation-for="Age" class="text-danger"></span>
+        </div>
+
+        <!-- Gender -->
+        <div class="form-group">
+            <label asp-for="Gender">Gender <span class="text-danger">*</span></label>
+            <select asp-for="Gender" asp-items="ViewBag.GenderOptions" class="form-control">
+                <option value="">-- Select Gender --</option>
+            </select>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+
+        <!-- Description -->
+        <div class="form-group">
+            <label asp-for="Description">Description <span class="text-danger">*</span></label>
+            <textarea asp-for="Description" class="form-control" placeholder="Describe the pet (e.g., temperament, likes, dislikes)" rows="4"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <!-- Status -->
+        <div class="form-group">
+            <label asp-for="Status">Adoption Status <span class="text-danger">*</span></label>
+            <select asp-for="Status" asp-items="ViewBag.StatusOptions" class="form-control">
+                <option value="">-- Select Status --</option>
+            </select>
+            <span asp-validation-for="Status" class="text-danger"></span>
+        </div>
+
+        <!-- Category -->
+        <div class="form-group">
+            <label asp-for="PetCategoryId">Pet Category <span class="text-danger">*</span></label>
+            <select asp-for="PetCategoryId" asp-items="ViewBag.PetCategoryId" class="form-control">
+                <option value="">-- Select Category --</option>
+            </select>
+            <span asp-validation-for="PetCategoryId" class="text-danger"></span>
+        </div>
+
+        <!-- Price -->
+        <div class="form-group">
+            <label asp-for="Price">Price<span class="text-danger">*</span></label>
+            <input asp-for="Price" class="form-control" placeholder="Enter the pet's Price" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+
+        <!-- Image Upload -->
+        <div class="form-group">
+            <label asp-for="ImageFile">Upload Pet Image</label>
+            <input asp-for="ImageFile" type="file" class="form-control" />
+            <small class="form-text text-muted">Accepted formats: JPEG, PNG. Max size: 5MB.</small>
+            <span asp-validation-for="ImageFile" class="text-danger"></span>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn-submit">Add Pet</button>
+    </form>
+
+    <!-- Back Link -->
+    <div class="back-link">
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+<style>
+    /* Form Styling */
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .form-container h1 {
+            text-align: center;
+            color: #4caf50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .form-container h4 {
+            text-align: center;
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+            .form-group input:focus,
+            .form-group select:focus,
+            .form-group textarea:focus {
+                border-color: #4caf50;
+                outline: none;
+                box-shadow: 0 0 5px rgba(76, 175, 80, 0.5);
+            }
+
+    .btn-submit {
+        display: block;
+        width: 100%;
+        padding: 12px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: white;
+        background: #4caf50;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+    }
+
+        .btn-submit:hover {
+            background: #388e3c;
+        }
+
+    .back-link {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1rem;
+        color: #4caf50;
+    }
+
+        .back-link a {
+            text-decoration: none;
+            color: #4caf50;
+        }
+
+            .back-link a:hover {
+                text-decoration: underline;
+            }
+</style>

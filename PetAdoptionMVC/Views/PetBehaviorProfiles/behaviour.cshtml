@@ -1,0 +1,44 @@
+﻿@model List<PetAdoptionMVC.Models.PetBehaviorProfile>
+@{
+    ViewData["Title"] = "behaviour";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Modal for Pet Details -->
+<div class="modal fade" id="petModal" tabindex="-1" role="dialog" aria-labelledby="petModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="petModalLabel">Pet Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+             @foreach (var pet in Model)
+        {
+            <div class="modal-body">
+                <h3 id="modal-pet-name"></h3>
+                <p><strong>Behavior:</strong> <span id="modal-pet-behavior">@pet.Behavior</span></p>
+                <p><strong>Training:</strong> <span id="modal-pet-training">@pet.Training</span></p>
+                <p><strong>Vaccination:</strong> <span id="modal-pet-vaccination"></span></p>
+                <p><strong>Health History:</strong> <span id="modal-pet-health"></span></p>
+            </div>
+        }
+            @foreach (var pet in Model)
+            {
+                <div class="modal-footer">
+                    <!-- Adopt Now Button -->
+                    <form id="adoptForm" method="post" action="/Adoption/CreateAdoptionRequest">
+                        <input type="hidden" name="petId" value="@pet.PetId" />
+                        <input type="hidden" name="userId" value="1" />
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-success">Adopt Now</button>
+                    </form>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+

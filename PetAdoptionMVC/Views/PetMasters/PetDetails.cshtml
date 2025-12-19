@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "PetDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model PetAdoptionMVC.Models.PetMaster
+
+
+
+<h2>Pet Details</h2>
+
+<div class="card">
+    <img src="@Url.Content("~/images/" + Model.PetImage)" alt="@Model.PetName" class="card-img-top" style="width:200px;height:200px;" />
+    <div class="card-body">
+        <h5 class="card-title">@Model.PetName</h5>
+        <p class="card-text"><strong>Age:</strong> @Model.Age</p>
+        <p class="card-text"><strong>Gender:</strong> @Model.Gender</p>
+        <p class="card-text"><strong>Status:</strong> @Model.Status</p>
+        <p class="card-text"><strong>Category:</strong> @Model.PetCategoryMaster.CategoryName</p>
+        <p class="card-text"><strong>Description:</strong> @Model.Description</p>
+    </div>
+</div>
+
+<h3>Behavior Profile</h3>
+@if (Model.PetBehaviorProfile != null)
+{
+    <p><strong>Behavior:</strong> @Model.PetBehaviorProfile.Behavior</p>
+    <p><strong>Training:</strong> @Model.PetBehaviorProfile.Training</p>
+}
+else
+{
+    <p>No behavior profile available.</p>
+}
+
+<h3>Adoption Requests</h3>
+@if (Model.AdoptionRequests.Any())
+{
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Request ID</th>
+                <th>Request Date</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var request in Model.AdoptionRequests)
+            {
+                <tr>
+                    <td>@request.RequestId</td>
+                    <td>@request.RequestDate.ToString("yyyy-MM-dd")</td>
+                    <td>@request.Status</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No adoption requests available.</p>
+}
+
+<a asp-action="CreateAdoptionRequest" asp-route-petId="@Model.PetId" class="btn btn-success">Adopt Now</a>
+
+

@@ -1,0 +1,113 @@
+﻿@model List<PetAdoptionMVC.Models.PetMaster>
+
+
+@{
+    ViewData["Title"] = "Pet List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<!-- Import Font Awesome for Icons -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+
+<div class="container mt-5">
+    <div class="row">
+        @foreach (var pet in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card pet-card">
+                    <img src="~/images/@pet.PetImage" class="card-img-top img-fluid rounded" alt="Pet Image">
+                    <div class="card-body">
+                        <h5 class="card-title">@pet.PetName</h5>
+                        <p class="card-text"><i class="fas fa-calendar-alt"></i> Age: @pet.Age</p>
+                        <p class="card-text"><i class="fas fa-venus-mars"></i> Gender: @pet.Gender</p>
+                        <p class="card-text"><i class="fas fa-paw"></i> Breed: @pet.PetCategoryMaster?.CategoryName</p>
+                        <p class="card-text"><i class="fas fa-heart"></i> Status: @pet.Status</p>
+                        <p class="card-text"><i class="fas fa-price"></i> Price: @pet.Price</p>
+
+                        <a href="/PetBehaviorProfiles/behaviour"
+                           class="btn btn-primary adopt-btn">
+                            Pet Details
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<!-- Custom Styles -->
+<style>
+    .pet-card {
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease-in-out;
+    }
+
+        .pet-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pet-card img {
+            border-radius: 10px;
+            height: 250px;
+            object-fit: cover;
+        }
+
+    .pet-name {
+        font-size: 1.25rem;
+        font-weight: bold;
+    }
+
+    .pet-status {
+        font-size: 0.9rem;
+        font-style: italic;
+    }
+
+    .adopt-btn {
+        background-color: #f8a5c2;
+        border: none;
+        padding: 10px 0;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+        .adopt-btn:hover {
+            background-color: #ff4b5c;
+        }
+
+    .modal-body {
+        font-size: 1rem;
+    }
+
+    .modal-footer button {
+        width: 100%;
+    }
+
+    .card-body {
+        background-color: #f9f9f9;
+        padding: 20px;
+    }
+
+    /* Custom Icon Styles */
+    .card-text i {
+        color: #f8a5c2;
+        margin-right: 8px;
+    }
+
+    .modal-body i {
+        color: #f8a5c2;
+    }
+
+    .adopt-btn {
+        background-color: #f8a5c2;
+        border: none;
+        padding: 10px 0;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+    }
+
+        .adopt-btn:hover {
+            background-color: #ff4b5c;
+        }
+</style>

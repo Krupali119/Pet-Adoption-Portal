@@ -1,0 +1,112 @@
+﻿@model PetAdoptionMVC.Models.PetCategoryMaster
+
+@{
+    ViewData["Title"] = "Edit Pet Category";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1 class="text-center">Edit Pet Category</h1>
+
+<h4 class="text-center">Pet Category Details</h4>
+<hr />
+
+<div class="row">
+    <div class="col-md-4 offset-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <input type="hidden" asp-for="CategoryId" />
+
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label">Category Name</label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="ActiveFlag" /> @Html.DisplayNameFor(model => model.ActiveFlag)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="text-center mt-3">
+    <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+<!-- Your CSS is applied below -->
+<style>
+    /* Apply CSS for forms and tables globally as per your request */
+
+    /* Form styling */
+    form {
+        margin: 20px 0;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input[type="text"], input[type="number"], input[type="file"], textarea, select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+
+    .btn-danger {
+        background-color: #e3342f;
+        color: white;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    /* Table styling */
+    table {
+        width: 100%;
+        margin: 20px 0;
+        border-collapse: collapse;
+    }
+
+        table th, table td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        table th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+</style>

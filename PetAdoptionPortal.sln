@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36518.9 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAdoptionAPI", "PetAdoptionAPI\PetAdoptionAPI.csproj", "{CA378425-98C8-4005-A774-B77DAAB7C81F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PetAdoptionMVC", "PetAdoptionMVC\PetAdoptionMVC.csproj", "{65442129-83B6-452E-9229-75AA1350B74F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CA378425-98C8-4005-A774-B77DAAB7C81F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA378425-98C8-4005-A774-B77DAAB7C81F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA378425-98C8-4005-A774-B77DAAB7C81F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA378425-98C8-4005-A774-B77DAAB7C81F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65442129-83B6-452E-9229-75AA1350B74F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65442129-83B6-452E-9229-75AA1350B74F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65442129-83B6-452E-9229-75AA1350B74F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65442129-83B6-452E-9229-75AA1350B74F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AF70C6A0-55EF-4E2D-BD51-E289372B1B7C}
+	EndGlobalSection
+EndGlobal

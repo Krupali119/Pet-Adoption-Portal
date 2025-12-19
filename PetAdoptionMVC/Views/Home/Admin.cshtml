@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Admin Dashboard";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="dashboard-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:25px;">
+    <h1 style="margin:0; color:var(--primary); font-weight:700;">Admin Dashboard</h1>
+    <button class="btn" onclick="location.href='@Url.Action("Create", "PetMasters")'">+ Add New Pet</button>
+</div>
+
+<div class="card-container">
+
+    <div class="card">
+        <i class="fas fa-dog card-icon"></i>
+        <h3>Total Pets</h3>
+        <p>50</p>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-user-friends card-icon"></i>
+        <h3>Total Adopters</h3>
+        <p>120</p>
+    </div>
+
+    <div class="card">
+        <i class="fas fa-handshake card-icon"></i>
+        <h3>Completed Adoptions</h3>
+        <p>35</p>
+    </div>
+
+</div>

@@ -1,0 +1,85 @@
+﻿@model PetAdoptionMVC.Models.PetBehaviorProfile
+
+@{
+    ViewData["Title"] = "Delete Pet Behavior Profile";
+
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="form-container">
+    <h1>Delete Pet Behavior Profile</h1>
+
+    <p>Are you sure you want to delete this?</p>
+
+    <div>
+        <h4>Behavior: @Model.Behavior</h4>
+        <h4>Training: @Model.Training</h4>
+        <h4>Pet: @Model.PetMaster.PetName</h4>
+    </div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="BehaviorProfileId" />
+        <button type="submit" class="btn-submit btn-danger">Delete</button> |
+        <a asp-action="Index" class="btn-submit btn-secondary">Back to List</a>
+    </form>
+</div>
+
+<style>
+    /* Form Styling */
+    .form-container {
+        max-width: 600px;
+        margin: 0 auto;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+        .form-container h1 {
+            text-align: center;
+            color: #4caf50;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .form-container p,
+        .form-container h4 {
+            text-align: center;
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+        }
+
+    .btn-submit {
+        display: inline-block;
+        padding: 12px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+    }
+
+        .btn-submit:hover {
+            opacity: 0.8;
+        }
+
+    .btn-danger {
+        background: #f44336;
+    }
+
+        .btn-danger:hover {
+            background: #d32f2f;
+        }
+
+    .btn-secondary {
+        background: #9e9e9e;
+    }
+
+        .btn-secondary:hover {
+            background: #757575;
+        }
+</style>

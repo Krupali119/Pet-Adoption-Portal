@@ -1,0 +1,102 @@
+﻿@{
+    ViewData["Title"] = "AllPetDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@model IEnumerable<PetAdoptionMVC.Models.PetMaster>
+
+<h2>All Pet Details</h2>
+
+<div class="pets-container">
+    @foreach (var pet in Model)
+    {
+        <div class="pet-card">
+            <div class="pet-image">
+                <img src="@Url.Content("~/images/" + pet.PetImage)" alt="@pet.PetName" />
+            </div>
+            <div class="pet-info">
+                <h3 class="pet-name">Name:@pet.PetName</h3>
+                <p class="pet-details">Age:@pet.Age |Gender: @pet.Gender</p>
+                <p class="pet-status">Status:@pet.Status</p>
+                <p class="pet-category">Breed:@pet.PetCategoryMaster.CategoryName</p>
+                <p class="pet-description">Description:@pet.Description</p>
+
+            </div>
+            <div class="pet-actions">
+                <a asp-action="PetDetails" asp-route-id="@pet.PetId" class="btn btn-primary">Details</a>
+                <a asp-action="CreateAdoptionRequest" asp-controller="Adoption" asp-route-petId="@pet.PetId" class="btn btn-success">Adopt Now</a>
+            </div>
+        </div>
+    }
+</div>
+<style>
+    .pets-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+    }
+
+    .pet-card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        width: 250px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-align: center;
+        font-family: Arial, sans-serif;
+    }
+
+        .pet-card .pet-image img {
+            width: 100%;
+            height: auto;
+        }
+
+    .pet-info {
+        padding: 15px;
+    }
+
+        .pet-info .pet-name {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .pet-info .pet-details,
+        .pet-info .pet-status,
+        .pet-info .pet-category,
+        .pet-info .pet-description,
+        .pet-info .pet-owner {
+            margin: 5px 0;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+    .pet-actions {
+        display: flex;
+        justify-content: space-evenly;
+        padding: 15px;
+        background-color: #f9f9f9;
+    }
+
+        .pet-actions .btn {
+            font-size: 0.9em;
+            padding: 8px 12px;
+            border-radius: 4px;
+            text-decoration: none;
+            color: #fff;
+        }
+
+        .pet-actions .btn-primary {
+            background-color: #007bff;
+        }
+
+        .pet-actions .btn-success {
+            background-color: #28a745;
+        }
+
+        .pet-actions .btn:hover {
+            opacity: 0.8;
+        }
+</style>

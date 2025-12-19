@@ -1,0 +1,178 @@
+﻿@model IEnumerable<PetAdoptionMVC.Models.PetCategoryMaster>
+
+@{
+    ViewData["Title"] = "Pet Categories";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    :root {
+        --bg: #f6f0e8;
+        --white: #ffffff;
+        --primary: #0B3B2E;
+        --primary-light: #2F6F57;
+        --accent: #D4AF37;
+        --text: #2e3d2f;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Card styling */
+    .card {
+        background-color: var(--white);
+        border-radius: 15px;
+        padding: 20px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        transition: 0.3s;
+        width: 95%;
+        max-width: 1200px;
+        margin: 40px auto;
+        display: flex;
+        flex-direction: column;
+        overflow-x: auto; /* ensures table fits inside card */
+    }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+    .card-header {
+        background: linear-gradient(90deg, var(--primary-light), var(--primary));
+        color: var(--white);
+        padding: 20px;
+        border-radius: 12px 12px 0 0;
+        text-align: center;
+    }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .card-header p {
+            margin: 5px 0 0;
+            font-size: 1rem;
+            color: #d9d9d9;
+        }
+
+    /* Top button styling */
+    .top-btn {
+        margin: 10px 0;
+        display: flex;
+        justify-content: flex-start; /* left aligned */
+    }
+
+    .btn {
+        padding: 8px 14px;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        transition: 0.3s;
+        color: var(--white);
+    }
+
+    .btn-success {
+        background: var(--primary);
+    }
+
+        .btn-success:hover {
+            background: var(--primary-light);
+        }
+
+    .btn-warning {
+        background: #ffc107;
+    }
+
+        .btn-warning:hover {
+            background: #e0a800;
+        }
+
+    .btn-danger {
+        background: #f44336;
+    }
+
+        .btn-danger:hover {
+            background: #d32f2f;
+        }
+
+    /* Table styling */
+    .table-container {
+        overflow-x: auto; /* horizontal scroll if table too wide */
+    }
+
+    .table {
+        width: 100%;
+        border-collapse: collapse;
+        table-layout: auto;
+    }
+
+        .table th, .table td {
+            padding: 12px 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+            word-wrap: break-word;
+        }
+
+        .table th {
+            background-color: var(--primary-light);
+            color: var(--white);
+            font-weight: 600;
+        }
+
+        .table tbody tr:hover {
+            background-color: #f1f7f3;
+            transition: 0.3s;
+        }
+
+</style>
+
+<div class="card">
+    <div class="card-header">
+        <h2>Pet Categories</h2>
+        <p>Manage all pet categories</p>
+    </div>
+
+    <div class="card-body">
+
+        <!-- Create button aligned left -->
+        <div class="top-btn">
+            <a asp-action="Create" class="btn btn-success">+ Create New Category</a>
+        </div>
+
+        <!-- Table container to handle responsive width -->
+        <div class="table-container">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>@Html.DisplayNameFor(model => model.First().CategoryName)</th>
+                        <th>@Html.DisplayNameFor(model => model.First().ActiveFlag)</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.CategoryName</td>
+                            <td>@item.ActiveFlag</td>
+                            <td>
+                                <a asp-action="Edit" asp-route-id="@item.CategoryId" class="btn btn-warning btn-sm">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@item.CategoryId" class="btn btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>

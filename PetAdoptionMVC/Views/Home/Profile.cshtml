@@ -1,0 +1,68 @@
+﻿@{
+    ViewData["Title"] = "Profile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model PetAdoptionMVC.Models.UserMaster
+
+
+<h2 class="text-center mt-4">
+    <i class="fas fa-paw"></i> Your Profile
+</h2>
+@if (ViewBag.Message != null)
+{
+    <div class="alert alert-success">
+        <i class="fas fa-check-circle"></i> @ViewBag.Message
+    </div>
+}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="card-title mb-0">
+                        <i class="fas fa-user"></i> Welcome, Pet Lover!
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted text-center">
+                        Keep your profile up-to-date to make the adoption journey smoother.
+                    </p>
+                    <form asp-action="Profile" method="post">
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label">
+                                <i class="fas fa-envelope"></i> Email Address
+                            </label>
+                            <input asp-for="Email" class="form-control" readonly />
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FullName" class="control-label">
+                                <i class="fas fa-user"></i> Full Name
+                            </label>
+                            <input asp-for="FullName" class="form-control" placeholder="Enter your full name" />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ContactNo" class="control-label">
+                                <i class="fas fa-phone"></i> Contact Number
+                            </label>
+                            <input asp-for="ContactNo" class="form-control" placeholder="Enter your contact number" />
+                            <span asp-validation-for="ContactNo" class="text-danger"></span>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success btn-block">
+                                <i class="fas fa-save"></i> Save Profile
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer bg-light text-center">
+                    <small>
+                        <i class="fas fa-heart"></i> Thank you for being part of our pet adoption family!
+                    </small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

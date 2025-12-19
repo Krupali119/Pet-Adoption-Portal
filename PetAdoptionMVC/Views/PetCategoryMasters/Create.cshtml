@@ -1,0 +1,150 @@
+﻿@model PetAdoptionMVC.Models.PetCategoryMaster
+
+@{
+    ViewData["Title"] = "Create Pet Category";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="card">
+    <div class="card-header">
+        <h2>Create Pet Category</h2>
+        <p>Fill out the form to add a new category for pets.</p>
+    </div>
+    <div class="card-body">
+        <form asp-action="Create">
+            <!-- Category Name -->
+            <div class="form-group">
+                <label asp-for="CategoryName">Category Name <span class="text-danger">*</span></label>
+                <input asp-for="CategoryName" class="form-control" placeholder="Enter category name" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn btn-success">Create Category</button>
+        </form>
+
+        <!-- Back Link -->
+        <div class="back-link">
+            <a asp-action="Index">← Back to List</a>
+        </div>
+    </div>
+</div>
+
+<style>
+    :root {
+        --bg: #f6f0e8;
+        --white: #ffffff;
+        --primary: #0B3B2E;
+        --primary-light: #2F6F57;
+        --accent: #D4AF37;
+        --text: #2e3d2f;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Card styling */
+    .card {
+        background-color: var(--white);
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+        max-width: 600px;
+        margin: 40px auto;
+        transition: 0.3s;
+    }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+    .card-header {
+        background: linear-gradient(90deg, var(--primary-light), var(--primary));
+        color: var(--white);
+        padding: 20px;
+        border-radius: 12px 12px 0 0;
+        text-align: center;
+    }
+
+        .card-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .card-header p {
+            margin: 5px 0 0 0;
+            font-size: 1rem;
+            color: #d9d9d9;
+        }
+
+    /* Form Styling */
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+        .form-group label {
+            font-size: 1rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            color: #333;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+            .form-group input:focus {
+                border-color: var(--primary);
+                outline: none;
+                box-shadow: 0 0 5px rgba(15, 75, 45, 0.3);
+            }
+
+    /* Button Styling */
+    .btn {
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        transition: 0.3s;
+        color: var(--white);
+    }
+
+    .btn-success {
+        background: var(--primary);
+        width: 100%;
+        font-size: 1.1rem;
+    }
+
+        .btn-success:hover {
+            background: var(--primary-light);
+        }
+
+    .back-link {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 1rem;
+        color: var(--primary);
+    }
+
+        .back-link a {
+            text-decoration: none;
+            color: var(--primary);
+        }
+
+            .back-link a:hover {
+                text-decoration: underline;
+            }
+</style>

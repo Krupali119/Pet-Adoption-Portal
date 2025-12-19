@@ -1,0 +1,36 @@
+﻿@model IEnumerable<PetAdoptionMVC.Models.FeedbackMaster>
+
+@{
+
+    ViewData["Title"] = "Feedback List";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Feedback List</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Feedback</th>
+            <th>Rating</th>
+            <th>Created Date</th>
+            <th>User</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Feedback</td>
+                <td>@item.Rating</td>
+                <td>@item.CreatedDate.ToString("yyyy-MM-dd")</td>
+                <td>@item.UserMaster.ContactNo</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.FeedbackId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,105 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@model IEnumerable<PetAdoptionMVC.Models.PetMedicalRecords>
+
+<div class="form-container">
+    <h1>Medical Records</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Pet Name</th>
+                <th>Vaccination Details</th>
+                <th>Health History</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var record in Model)
+            {
+                <tr>
+                    <td>@record.PetMaster.PetName</td>
+                    <td>@record.VaccinationDetails</td>
+                    <td>@record.HealthHistory</td>
+                    <td>
+                        <a href="@Url.Action("Edit", "PetMedicalRecords", new { id = record.MedicalRecordId })" class="btn-submit btn-primary">Edit</a>
+                        <a href="@Url.Action("Delete", "PetMedicalRecords", new { id = record.MedicalRecordId })" class="btn-submit btn-danger">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="@Url.Action("Create", "PetMedicalRecords")" class="btn-submit btn-success">Add New Record</a>
+</div>
+
+<style>
+    /* Table Styling */
+    .table {
+        width: 100%;
+        margin-top: 20px;
+        border-collapse: collapse;
+    }
+
+    .table th,
+    .table td {
+        padding: 12px;
+        text-align: left;
+        border: 1px solid #ddd;
+    }
+
+    .table th {
+        background-color: #f2f2f2;
+        color: #333;
+        font-weight: 600;
+    }
+
+    .table td {
+        color: #555;
+    }
+
+    /* Button Styling */
+    .btn-submit {
+        display: inline-block;
+        padding: 12px;
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+        text-align: center;
+    }
+
+        .btn-submit:hover {
+            opacity: 0.8;
+        }
+
+    .btn-primary {
+        background: #4caf50;
+    }
+
+        .btn-primary:hover {
+            background: #388e3c;
+        }
+
+    .btn-danger {
+        background: #f44336;
+    }
+
+        .btn-danger:hover {
+            background: #d32f2f;
+        }
+
+    .btn-success {
+        background: #4caf50;
+    }
+
+        .btn-success:hover {
+            background: #388e3c;
+        }
+</style>
